@@ -12,6 +12,26 @@ computers. You will use this to set up your ENGR environment to access
 classroom assignments hosted on GitHub and configure Gradescope to have
 access your repositories so it can download and run your code.
 
+## Create a GitHub and enable password-based login
+
+GitHub is a hosting platform for Git repositories (explained below).
+You'll use it to accept future assignments and labs throughout the term.
+If you don't already have one, create a [GitHub](https://www.github.com)
+account. You do **not** have to include personally identifiable information
+in your GitHub account (e.g., you can use an anonymous account with a personal
+email address if you'd like).
+
+**Important:** The laptops in DEAR 222 have special browser puppeteering tools
+that prevent students from accessing forbidden resources. Some third-party
+sign-in options for GitHub, such as signing in via a Google account, flag
+these puppeteering tools as a security concern and will reject login attempts.
+So, during labs, you should log into
+GitHub directly via a username and password. This requires having a password
+associated with your GitHub account. **If your GitHub account doesn't have a
+password associated with it (because you typically sign in via a third-party
+site), create a password for it now.** You can do this via the "Forgot password"
+option on the GitHub login page.
+
 ## Configuring SSH keys to authenticate with GitHub
 
 Git is a version control system (VCS); its purpose is to help track and
@@ -51,15 +71,9 @@ your GitHub repository in Gradescope.
 This assignment will teach you how to do these things. To start,
 complete the below steps:
 
-1.  Create an account on [GitHub](https://www.github.com) if you don’t
-    already have one. You do <ins>not</ins> have to include personally
-    identifiable information in your GitHub username or profile if you
-    don’t want to, and you do <ins>not</ins> have to use your OSU email
-    address if you don’t want to.
+1.  Log into your GitHub account.
 
-2.  Log in to your GitHub account.
-
-3.  In order to download repositories from your GitHub account to the
+2.  In order to download repositories from your GitHub account to the
     engineering servers (and upload your completed work back to GitHub),
     you’ll need to be able to authenticate your engineering server user
     account with GitHub. SSH keys are the most common authentication
@@ -79,13 +93,13 @@ complete the below steps:
     all the steps in this assignment to generate and configure a new
     pair of keys.
 
-4.  Use `cd` to navigate to your home directory on the ENGR servers if
+3.  Use `cd` to navigate to your home directory on the ENGR servers if
     you’re not already there.
 
-5.  Type `cd .ssh` and press enter. This will navigate you into the
+4.  Type `cd .ssh` and press enter. This will navigate you into the
     (hidden) `.ssh` directory, which resides within your home directory.
 
-6.  Type `ls`. You should see the two SSH key files that you just
+5.  Type `ls`. You should see the two SSH key files that you just
     generated. They should be named `id_ed25519` and `id_ed25519.pub`.
 
     (The former is the private key, and the latter is the public key.
@@ -97,7 +111,7 @@ complete the below steps:
     download and upload Git repositories associated with your GitHub
     account from within an SSH session on the ENGR servers).
 
-7.  Type `clear` and press enter. Then type `cat id_ed25519.pub` and
+6.  Type `clear` and press enter. Then type `cat id_ed25519.pub` and
     press enter again. This will print the contents of your public key
     file to the terminal. Copy the <ins>entire</ins> printed contents to
     your clipboard (do not copy the “`cat id_ed25519.pub`” command
@@ -110,32 +124,32 @@ complete the below steps:
 
     ![public key example](res/public-key.png)
 
-8.  Go back to your browser where you’re logged into your GitHub
+7.  Go back to your browser where you’re logged into your GitHub
     account. Click on your profile icon in the topright corner. Click
     “Settings.”
 
     ![Settings button](res/settings-button.png)
 
-9.  On the left, click “SSH and GPG keys”.
+8.  On the left, click “SSH and GPG keys”.
 
     ![SSH and GPG keys link](res/ssh-and-gpg-keys-link.png)
 
-10. Click “New SSH key.”
+9. Click “New SSH key.”
 
     ![New SSH Key link](res/new-ssh-key.png)
 
-11. Give the SSH key a title (e.g., "ENGR servers user account"). Leave
+10. Give the SSH key a title (e.g., "ENGR servers user account"). Leave
     the key type as “Authentication Key”. In the "Key" field, paste the
     public key contents that you copied in the previous step. For
     example, mine looks like this:
 
     ![Add new SSH key](res/ssh-key-content.png)
 
-12. Click “Add SSH key”.
+11. Click “Add SSH key”.
 
     ![Add SSH key button](res/add-ssh-key-button.png)
 
-13. Now that your GitHub account has a copy of your public key, it can
+12. Now that your GitHub account has a copy of your public key, it can
     verify signatures generated by your private key on the ENGR servers.
     Whenever you use `git` commands in an SSH session on the ENGR
     servers, it will sign its messages using the private key
